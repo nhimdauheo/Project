@@ -48,6 +48,8 @@ class StaffMenu extends Component {
                 <div className="row">
                     {staff}
                 </div><br />
+
+                {/* Điều kiện ẩn hiện h5 */}
                 <h5 style={{display: this.state.selectStaffs != null ?"none":"block"}}>Bấm vào nhân viên để xem thêm thông tin</h5>
                 <div className="row">
                     {this.renderStaff(this.state.selectStaffs)}
