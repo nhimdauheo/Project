@@ -13,6 +13,8 @@ class StaffMenu extends Component {
     onStaffsSelect(staff) {
         this.setState({ selectStaffs: staff })
     }
+
+    // Xử lý khi click vào nhân viên sẽ lấy thêm thông tin
     renderStaff(staff) {
         if (staff != null) {
             return (
@@ -51,6 +53,8 @@ class StaffMenu extends Component {
 
                 {/* Điều kiện ẩn hiện h5 */}
                 <h5 style={{display: this.state.selectStaffs != null ?"none":"block"}}>Bấm vào nhân viên để xem thêm thông tin</h5>
+
+
                 <div className="row">
                     {this.renderStaff(this.state.selectStaffs)}
                 </div>
