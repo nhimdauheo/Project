@@ -37,6 +37,8 @@ class StaffMenu extends Component {
 
     // Xử lý để hiện thị data trong file staffs.jsx
     render() {
+
+        // Sử dụng ArrayFunction để duyệt object
         const staff = this.props.staffs.map((staff) => {
             return (
                     <div key={staff.id} className="col-md-6 col-lg-4 p-2">
