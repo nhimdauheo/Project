@@ -41,7 +41,7 @@ class StaffMenu extends Component {
             return (
                     <div key={staff.id} className="col-md-6 col-lg-4 p-2">
                         <Form >
-                            
+
                         {/* Đổi thuộc tính trỏ chuột cursor: "pointer"  */}
                             <Input style={{ cursor: "pointer", border: "1px solid #ced4da" }} onClick={() => this.onStaffsSelect(staff)} value={staff.name} />
                         </Form>
@@ -50,6 +50,8 @@ class StaffMenu extends Component {
         });
         return (
             <div className="container">
+
+                {/* Hiển thị renderStaff */}
                 <div className="row">
                     {staff}
                 </div><br />
@@ -57,7 +59,7 @@ class StaffMenu extends Component {
                 {/* Điều kiện ẩn hiện h5 */}
                 <h5 style={{display: this.state.selectStaffs != null ?"none":"block"}}>Bấm vào nhân viên để xem thêm thông tin</h5>
 
-
+                
                 <div className="row">
                     {this.renderStaff(this.state.selectStaffs)}
                 </div>
