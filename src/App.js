@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Navbar, NavbarBrand} from 'reactstrap'
 import StaffMenu from './components/StaffComponents'
-import { STAFFS, DEPARTMENTS } from './data/staffs'
+import { STAFFS } from './data/staffs'
 
 class App extends Component {
 

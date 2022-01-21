@@ -23,6 +23,7 @@ class StaffMenu extends Component {
                     <Label>Ngày sinh: {dateFormat(new Date(staff.doB), "dd/mm/yyyy")}</Label><br />
                     <Label>Ngày vào công ty: {dateFormat(new Date(staff.startDate), "dd/mm/yyyy")}</Label><br />
                     <Label>Phòng ban: {staff.department.name} </Label><br />
+                    <Label>Chức danh: {staff.role} </Label><br />
                     <Label>Số ngày nghỉ còn lại: {staff.annualLeave}</Label><br />
                     <Label>Số ngày đi làm thêm: {staff.overTime}</Label>
                 </Form>
@@ -40,6 +41,8 @@ class StaffMenu extends Component {
             return (
                     <div key={staff.id} className="col-md-6 col-lg-4 p-2">
                         <Form >
+                            
+                        {/* Đổi thuộc tính trỏ chuột cursor: "pointer"  */}
                             <Input style={{ cursor: "pointer", border: "1px solid #ced4da" }} onClick={() => this.onStaffsSelect(staff)} value={staff.name} />
                         </Form>
                     </div>
