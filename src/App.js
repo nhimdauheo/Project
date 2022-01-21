@@ -22,6 +22,8 @@ class App extends Component {
           <NavbarBrand href='/'>Ứng dụng quản lý nhân sự V1.0</NavbarBrand>
         </div>
       </Navbar>
+
+      {/* Hiển thị các render trong StaffMenu */}
       <StaffMenu staffs = {this.state.staffs}/>
     </div>
   );
