@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Input, Form} from "reactstrap"
+import { Input, Form, CardImg} from "reactstrap"
 import StaffDetail from "./StaffDetailComponent";
 
 class StaffMenu extends Component {
@@ -21,11 +21,11 @@ class StaffMenu extends Component {
         // Sử dụng ArrayFunction để duyệt object
         const staff = this.props.staffs.map((staff) => {
             return (
-                <div key={staff.id} className="col-md-6 col-lg-4 p-2">
+                <div key={staff.id} className="col-12 col-lg-4 p-2">
                     <Form >
-
+                        <CardImg width="10%" src={staff.image} alt={staff.name} />
                         {/* Đổi thuộc tính trỏ chuột cursor: "pointer"  */}
-                        <Input style={{ cursor: "pointer", border: "1px solid #ced4da" }} onClick={() => this.onStaffsSelect(staff)} value={staff.name} />
+                        <Input style={{ cursor: "pointer", border: "0px solid #ced4da", textAlign:"center" }} onClick={() => this.onStaffsSelect(staff)} value={staff.name} />
                     </Form>
                 </div>
             )

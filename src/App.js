@@ -19,7 +19,7 @@ class App extends Component {
       <div className="App">
         <Navbar dark color="warning">
           <div className='container'>
-            <NavbarBrand href='/'>Ứng dụng quản lý nhân sự V1.0</NavbarBrand>
+            <NavbarBrand href='/'>StaffApp V2.0</NavbarBrand>
           </div>
         </Navbar>
 
