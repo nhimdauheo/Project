@@ -3,6 +3,7 @@ import { Navbar, NavbarBrand } from "reactstrap";
 import { STAFFS } from "../data/staffs"
 import StaffMenu from "./StaffComponents";
 import StaffDetail from "./StaffDetailComponent";
+import StaffHeader from "./StaffHeaderComponent";
 
 class MainStaff extends Component {
     constructor(props) {
@@ -18,11 +19,7 @@ class MainStaff extends Component {
     render() {
         return (
             <div className="App">
-                <Navbar dark color="warning">
-                    <div className="container">
-                        <NavbarBrand href="/">StaffApp V1.2</NavbarBrand>
-                    </div>
-                </Navbar>
+               <StaffHeader />
                 <StaffMenu staffs = {this.state.staffs}
                     onClick = {(staffID)=>this.onStaffsSelect(staffID)} />
                 <StaffDetail 
