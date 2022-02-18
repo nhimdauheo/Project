@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Navbar, NavbarBrand } from "reactstrap";
 import { STAFFS } from "../data/staffs"
 import StaffMenu from "./StaffComponents";
 import StaffDetail from "./StaffDetailComponent";
+import StaffFooter from "./StaffFooterComponent";
 import StaffHeader from "./StaffHeaderComponent";
 
 class MainStaff extends Component {
@@ -24,6 +24,7 @@ class MainStaff extends Component {
                     onClick = {(staffID)=>this.onStaffsSelect(staffID)} />
                 <StaffDetail 
                     staff = {this.state.staffs.filter((staff) => staff.id === this.state.selectStaffs)[0]}/>
+                <StaffFooter />
             </div>
         )
     }
