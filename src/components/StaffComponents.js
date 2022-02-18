@@ -13,7 +13,7 @@ class StaffMenu extends Component {
         // Sử dụng ArrayFunction để duyệt object
         const staff = this.props.staffs.map((staff) => {
             return (
-                <div key={staff.id} className="col-12 col-lg-2 p-2">
+                <div key={staff.id} className="col-6 col-lg-2 p-2">
                     <Card onClick={() => this.props.onClick(staff.id)}>
                             <CardImg width="100%" src={staff.image} alt={staff.name}/>
                             <CardTitle style={{textAlign:"center"}}>{staff.name}</CardTitle>           
@@ -26,10 +26,7 @@ class StaffMenu extends Component {
                 {/* Hiển thị renderStaff */}
                 <div className="row">
                     {staff}
-                </div><br />
-
-                {/* Điều kiện ẩn hiện h5 */}
-                <h5 style={{ display: this.props.selectStaffs != null ? "none" : "block" }}>Bấm vào nhân viên để xem thêm thông tin</h5>
+                </div>
             </div>
         )
     }
