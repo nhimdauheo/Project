@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import {Navbar, NavbarBrand, Jumbotron, NavbarToggler, NavLink, Collapse, Nav, NavItem} from 'reactstrap'
+import {Navbar, NavbarBrand, Jumbotron, NavbarToggler, Collapse, Nav, NavItem} from 'reactstrap'
+import {NavLink} from 'react-router-dom'
 
 class StaffHeader extends Component {
     constructor(props){

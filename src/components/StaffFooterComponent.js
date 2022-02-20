@@ -8,9 +8,9 @@ function StaffFooter(props) {
                     <div className="col-4 offset-1 col-sm-2">
                         <h5>Links</h5>
                         <ul className="list-unstyled">
-                            <li><a href="#">Nhân viên</a></li>
-                            <li><a href="#">Phòng ban</a></li>
-                            <li><a href="#">Bảng lương</a></li>
+                            <li><a href="/nhanvien">Nhân viên</a></li>
+                            <li><a href="/phongban">Phòng ban</a></li>
+                            <li><a href="/bangluong">Bảng lương</a></li>
                         </ul>
                     </div>
                     <div className="col-7 col-sm-5">
