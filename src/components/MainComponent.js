@@ -21,7 +21,7 @@ class MainStaff extends Component {
     render() {
         const StaffWidthId = ({ match }) => {
             return (
-                <StaffDetail staff={this.state.staffs.filter((staff) => staff.id === parseInt(match.params.staffId, 10))[0]} />
+                <StaffDetail staff={this.state.staffs.filter((staff) => staff.id === parseInt(match.params.staffId, 10))} />
                 
             )
         };

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { CardImg, Form, Label, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { CardImg, Card, Breadcrumb, BreadcrumbItem, CardBody, CardTitle } from 'reactstrap';
 import dateFormat from "dateformat"
 import { Link } from 'react-router-dom';
 
@@ -7,7 +7,7 @@ class StaffDetail extends Component {
     constructor(props) {
         super(props);
     }
-    
+
     // Xử lý khi click vào nhân viên sẽ lấy thêm thông tin
     renderStaff = () => {
         const staff = this.props;
@@ -21,15 +21,17 @@ class StaffDetail extends Component {
                                     <CardImg width="100%" src={staff.image} alt={staff.name}></CardImg>
                                 </div>
                                 <div className="col-5 col-5 m-1">
-                                    <Form style={{ border: "1px solid #ced4da", padding: 15, borderRadius: 10 }} className="col-md-6 col-lg-4">
-                                        <h5><strong>Họ và tên: {staff.name}</strong></h5>
-                                        <Label>Ngày sinh: {dateFormat(new Date(staff.doB), "dd/mm/yyyy")}</Label><br />
-                                        <Label>Ngày vào công ty: {dateFormat(new Date(staff.startDate), "dd/mm/yyyy")}</Label><br />
-                                        <Label>Phòng ban: {staff.department.name} </Label><br />
-                                        <Label>Chức danh: {staff.role} </Label><br />
-                                        <Label>Số ngày nghỉ còn lại: {staff.annualLeave}</Label><br />
-                                        <Label>Số ngày đi làm thêm: {staff.overTime}</Label>
-                                    </Form>
+                                    <Card>
+                                        <CardBody>
+                                            <CardTitle>{staff.name}</CardTitle>
+                                            <CardTitle>Họ và tên: {staff.name}</CardTitle>
+                                            <CardTitle>Ngày sinh: {dateFormat(new Date(staff.doB), "dd/mm/yyyy")}</CardTitle>
+                                            <CardTitle>Ngày vào công ty: {dateFormat(new Date(staff.startDate), "dd/mm/yyyy")}</CardTitle>
+                                            <CardTitle>Phòng ban: {staff.department.name}</CardTitle>
+                                            <CardTitle>Số ngày nghỉ còn lại: {staff.annualLeave}</CardTitle>
+                                            <CardTitle>Số ngày đi làm thêm: {staff.overTime}</CardTitle>
+                                        </CardBody>
+                                    </Card>
                                 </div>
                             </div>
                         </div>
