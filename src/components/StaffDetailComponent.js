@@ -10,7 +10,7 @@ class StaffDetail extends Component {
 
     // Xử lý khi click vào nhân viên sẽ lấy thêm thông tin
     renderStaff = () => {
-        const staff = this.props;
+        const {staff} = this.props;
         if (staff != null) {
             return (
                 <div className='container'>
@@ -23,7 +23,6 @@ class StaffDetail extends Component {
                                 <div className="col-5 col-5 m-1">
                                     <Card>
                                         <CardBody>
-                                            <CardTitle>{staff.name}</CardTitle>
                                             <CardTitle>Họ và tên: {staff.name}</CardTitle>
                                             <CardTitle>Ngày sinh: {dateFormat(new Date(staff.doB), "dd/mm/yyyy")}</CardTitle>
                                             <CardTitle>Ngày vào công ty: {dateFormat(new Date(staff.startDate), "dd/mm/yyyy")}</CardTitle>

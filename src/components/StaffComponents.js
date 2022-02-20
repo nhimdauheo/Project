@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { CardImg, Card, CardTitle } from "reactstrap"
 import { Link } from 'react-router-dom'
 
-
 class StaffMenu extends Component {
     constructor(props) {
         super(props);
