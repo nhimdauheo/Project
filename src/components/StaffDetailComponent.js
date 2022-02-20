@@ -24,8 +24,8 @@ class StaffDetail extends Component {
                                     <Card>
                                         <CardBody>
                                             <CardTitle>Họ và tên: {staff.name}</CardTitle>
-                                            <CardTitle>Ngày sinh: {dateFormat(new Date(staff.doB), "dd/mm/yyyy")}</CardTitle>
-                                            <CardTitle>Ngày vào công ty: {dateFormat(new Date(staff.startDate), "dd/mm/yyyy")}</CardTitle>
+                                            <CardTitle>Ngày sinh: {dateFormat(new Date(staff.date), "dd/mm/yyyy")}</CardTitle>
+                                            <CardTitle>Ngày vào công ty: {dateFormat(new Date(staff.date), "dd/mm/yyyy")}</CardTitle>
                                             <CardTitle>Phòng ban: {staff.department.name}</CardTitle>
                                             <CardTitle>Số ngày nghỉ còn lại: {staff.annualLeave}</CardTitle>
                                             <CardTitle>Số ngày đi làm thêm: {staff.overTime}</CardTitle>

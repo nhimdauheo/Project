@@ -8,7 +8,6 @@ import StaffFooter from "./StaffFooterComponent";
 import StaffHeader from "./StaffHeaderComponent";
 import StaffDetail from "./StaffDetailComponent"
 
-
 class MainStaff extends Component {
     constructor(props) {
         super(props)
