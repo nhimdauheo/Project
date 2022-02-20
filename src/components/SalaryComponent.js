@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Card, CardHeader, CardTitle } from "reactstrap";
+import { Card, CardHeader, CardTitle, Breadcrumb, BreadcrumbItem } from "reactstrap";
+import { Link } from 'react-router-dom'
 
 class SalaryStaff extends Component {
     constructor(props) {
@@ -14,7 +15,7 @@ class SalaryStaff extends Component {
                         <CardTitle>Mã nhân viên: {salary.id}</CardTitle>
                         <CardTitle>Hệ số lương: {salary.salaryScale}</CardTitle>
                         <CardTitle>Số giờ làm thêm: {salary.overTime}</CardTitle>
-                        <CardHeader>Lương: {salary.salaryScale}*3000000 </CardHeader>
+                        <CardHeader>Lương: {salary.salaryScale*3000000 + (salary.overTime/8)*200000}</CardHeader>
                     </Card>
                 </div>
             )
@@ -22,10 +23,21 @@ class SalaryStaff extends Component {
         return (
             <div className="container">
                 <div className="row">
+                    <Breadcrumb>
+                        <BreadcrumbItem><Link to="/nhamvien">Nhân viên</Link></BreadcrumbItem>
+                        <BreadcrumbItem active>Bảng lương</BreadcrumbItem>
+                    </Breadcrumb>
+                    <div className="col-12">
+                        <h3>Menu</h3>
+                        <hr />
+                    </div>
+                </div>
+                <div className="row">
                     {salary}
                 </div>
             </div>
         )
     }
+   
 }
 export default SalaryStaff;

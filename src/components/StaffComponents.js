@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import {CardImg, Card, CardTitle } from "reactstrap"
+import {CardImg, Card, CardTitle, Breadcrumb, BreadcrumbItem } from "reactstrap"
+import { Link } from 'react-router-dom'
 
 
 class StaffMenu extends Component {
@@ -23,6 +24,12 @@ class StaffMenu extends Component {
         });
         return (
             <div className="container">
+                <div className="row">
+                    <div className="col-12">
+                        <h3>Nhân viên</h3>
+                        <hr />
+                    </div>
+                </div>
                 {/* Hiển thị renderStaff */}
                 <div className="row">
                     {staff}

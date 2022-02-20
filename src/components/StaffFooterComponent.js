@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function StaffFooter(props) {
     return (
@@ -8,9 +9,9 @@ function StaffFooter(props) {
                     <div className="col-4 offset-1 col-sm-2">
                         <h5>Links</h5>
                         <ul className="list-unstyled">
-                            <li><a href="/nhanvien">Nhân viên</a></li>
-                            <li><a href="/phongban">Phòng ban</a></li>
-                            <li><a href="/bangluong">Bảng lương</a></li>
+                            <li><Link to="/nhanvien">Nhân viên</Link></li>
+                            <li><Link to="/phongban">Phòng ban</Link></li>
+                            <li><Link to="/bangluong">Bảng lương</Link></li>
                         </ul>
                     </div>
                     <div className="col-7 col-sm-5">

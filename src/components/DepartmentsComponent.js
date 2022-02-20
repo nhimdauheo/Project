@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Card, CardText, CardTitle } from "reactstrap";
+import { Card, CardText, CardTitle, Breadcrumb, BreadcrumbItem } from "reactstrap";
+import { Link } from 'react-router-dom';
 
 class Deapartments extends Component {
     constructor(props){
@@ -18,6 +19,16 @@ class Deapartments extends Component {
             });
             return(
                 <div className="container">
+                    <div className="row">
+                    <Breadcrumb>
+                        <BreadcrumbItem><Link to="/nhamvien">Nhân viên</Link></BreadcrumbItem>
+                        <BreadcrumbItem active>Phòng ban</BreadcrumbItem>
+                    </Breadcrumb>
+                    <div className="col-12">
+                        <h3>Menu</h3>
+                        <hr />
+                    </div>
+                </div>
                 {/* Hiển thị renderStaff */}
                 <div className="row">
                     {department}
