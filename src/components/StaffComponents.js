@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {CardImg, Card, CardTitle, Breadcrumb, BreadcrumbItem } from "reactstrap"
+import { CardImg, Card, CardTitle } from "reactstrap"
 import { Link } from 'react-router-dom'
 
 
@@ -7,7 +7,7 @@ class StaffMenu extends Component {
     constructor(props) {
         super(props);
     }
-    
+
     // Xử lý để hiện thị data trong file staffs.jsx
     render() {
 
@@ -15,9 +15,11 @@ class StaffMenu extends Component {
         const staff = this.props.staffs.map((staff) => {
             return (
                 <div key={staff.id} className="col-6 col-lg-2 p-2">
-                    <Card onClick={() => this.props.onClick(staff.id)}>
-                            <CardImg width="100%" src={staff.image} alt={staff.name}/>
-                            <CardTitle style={{textAlign:"center"}}>{staff.name}</CardTitle>           
+                    <Card >
+                        <Link to={`/nhanvien/${staff.id}/`}>
+                            <CardImg width="100%" src={staff.image} alt={staff.name} />
+                            <CardTitle style={{ textAlign: "center" }}>{staff.name}</CardTitle>
+                        </Link>
                     </Card>
                 </div>
             )

@@ -15,7 +15,7 @@ class SalaryStaff extends Component {
                         <CardTitle>Mã nhân viên: {salary.id}</CardTitle>
                         <CardTitle>Hệ số lương: {salary.salaryScale}</CardTitle>
                         <CardTitle>Số giờ làm thêm: {salary.overTime}</CardTitle>
-                        <CardHeader>Lương: {salary.salaryScale*3000000 + (salary.overTime/8)*200000}</CardHeader>
+                        <CardHeader>Lương: {(salary.salaryScale*3000000 + salary.overTime*200000).toFixed(0)}</CardHeader>
                     </Card>
                 </div>
             )
