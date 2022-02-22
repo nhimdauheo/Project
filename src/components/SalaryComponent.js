@@ -10,12 +10,12 @@ class SalaryStaff extends Component {
         const salary = this.props.staffs.map((salary) => {
             return (
                 <div key={salary.id} className="col-12 col-md-6 col-lg-4 p-2">
-                    <Card>
+                    <Card body>
                         <CardTitle style={{ fontSize: "25px", fontWeight: "bold" }}>{salary.name}</CardTitle>
                         <CardTitle>Mã nhân viên: {salary.id}</CardTitle>
                         <CardTitle>Hệ số lương: {salary.salaryScale}</CardTitle>
                         <CardTitle>Số giờ làm thêm: {salary.overTime}</CardTitle>
-                        <CardHeader>Lương: {(salary.salaryScale*3000000 + salary.overTime*200000).toFixed(0)}</CardHeader>
+                        <CardHeader style={{ backgroundColor: '#1E90FF', borderColor: '#333', color:"white" }}>Lương: {(salary.salaryScale*3000000 + salary.overTime*200000).toFixed(0)}</CardHeader>
                     </Card>
                 </div>
             )
@@ -28,7 +28,7 @@ class SalaryStaff extends Component {
                         <BreadcrumbItem active>Bảng lương</BreadcrumbItem>
                     </Breadcrumb>
                     <div className="col-12">
-                        <h3>Menu</h3>
+                        <h3><i class="fa fa-credit-card-alt" aria-hidden="true"></i> Bảng Lương</h3>
                         <hr />
                     </div>
                 </div>

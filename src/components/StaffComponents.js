@@ -14,10 +14,10 @@ class StaffMenu extends Component {
         const staff = this.props.staffs.map((staff) => {
             return (
                 <div key={staff.id} className="col-6 col-sm-6 col-md-3 col-lg-2 p-2">
-                    <Card >
+                    <Card inverse color="info">
                         <Link to={`/nhanvien/${staff.id}/`}>
                             <CardImg width="100%" src={staff.image} alt={staff.name} />
-                            <CardTitle style={{ textAlign: "center" }}>{staff.name}</CardTitle>
+                            <CardTitle style={{ textAlign: "center", color: "white" }}>{staff.name}</CardTitle>
                         </Link>
                     </Card>
                 </div>
@@ -27,7 +27,7 @@ class StaffMenu extends Component {
             <div className="container">
                 <div className="row">
                     <div className="col-12">
-                        <h3>Nhân viên</h3>
+                        <h3><i class="fa fa-user-circle" aria-hidden="true"></i> Nhân viên</h3>
                         <hr />
                     </div>
                 </div>

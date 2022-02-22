@@ -10,7 +10,7 @@ class Deapartments extends Component {
             const department = this.props.departments.map((department) => {
                 return(
                     <div key={department.id} className="col-12 col-md-6 col-lg-4 p-2">
-                        <Card style={{padding: 5}}>
+                        <Card body style={{padding: 5, borderRadius: 10}}>
                             <CardText style={{fontSize:"25px", fontWeight:"bold"}}>{department.name}</CardText>
                             <CardTitle>Số lượng nhân viên: {department.numberOfStaff}</CardTitle>
                         </Card>
@@ -25,7 +25,7 @@ class Deapartments extends Component {
                         <BreadcrumbItem active>Phòng ban</BreadcrumbItem>
                     </Breadcrumb>
                     <div className="col-12">
-                        <h3>Menu</h3>
+                        <h3><i class="fa fa-building" aria-hidden="true"></i> Phòng Ban</h3>
                         <hr />
                     </div>
                 </div>
