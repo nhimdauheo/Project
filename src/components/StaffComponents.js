@@ -13,7 +13,7 @@ class StaffMenu extends Component {
         // Sử dụng ArrayFunction để duyệt object
         const staff = this.props.staffs.map((staff) => {
             return (
-                <div key={staff.id} className="col-6 col-lg-2 p-2">
+                <div key={staff.id} className="col-6 col-sm-6 col-md-3 col-lg-2 p-2">
                     <Card >
                         <Link to={`/nhanvien/${staff.id}/`}>
                             <CardImg width="100%" src={staff.image} alt={staff.name} />

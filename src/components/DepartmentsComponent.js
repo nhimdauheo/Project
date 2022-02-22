@@ -9,8 +9,8 @@ class Deapartments extends Component {
     render(){
             const department = this.props.departments.map((department) => {
                 return(
-                    <div key={department.id} className="col-6 col-lg-4 p-2">
-                        <Card>
+                    <div key={department.id} className="col-12 col-md-6 col-lg-4 p-2">
+                        <Card style={{padding: 5}}>
                             <CardText style={{fontSize:"25px", fontWeight:"bold"}}>{department.name}</CardText>
                             <CardTitle>Số lượng nhân viên: {department.numberOfStaff}</CardTitle>
                         </Card>

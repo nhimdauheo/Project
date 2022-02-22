@@ -16,13 +16,13 @@ class StaffDetail extends Component {
             return (
                 <div className='container'>
                     <div className='row'>
-                        <div className='col-12 col-5 m-1'>
+                        <div className='col-12 '>
                             <div className='row'>
-                                <div className='col-5 col-5 m-1'>
+                                <div className='col-12 col- col-md-4 col-lg-3 p-2'>
                                     <CardImg width="100%" src={staff.image} alt={staff.name}></CardImg>
                                 </div>
-                                <div className="col-5 col-5 m-1">
-                                    <Card>
+                                <div className="col-12 col-md-8 col-lg-9 p-2">
+                                    <Card style={{fontSize:18, borderRadius: 10}}>
                                         <CardBody>
                                             <CardTitle>Họ và tên: {staff.name}</CardTitle>
                                             <CardTitle>Ngày sinh: {dateFormat(new Date(staff.doB), "dd/mm/yyyy")}</CardTitle>
