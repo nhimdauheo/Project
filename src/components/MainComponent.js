@@ -7,6 +7,7 @@ import StaffMenu from "./StaffComponents";
 import StaffFooter from "./StaffFooterComponent";
 import StaffHeader from "./StaffHeaderComponent";
 import StaffDetail from "./StaffDetailComponent"
+import HomeStaff from "./StaffHomeComponent";
 
 class MainStaff extends Component {
     constructor(props) {
@@ -18,6 +19,11 @@ class MainStaff extends Component {
     };
 
     render() {
+        const HomePage = () => {
+            return(
+              <HomeStaff/>
+            );
+          }
         const StaffWidthId = ({ match }) => {
             return (
                 <StaffDetail staff={this.state.staffs.filter((staff) => staff.id === parseInt(match.params.staffId, 10))[0]} />
@@ -29,11 +35,12 @@ class MainStaff extends Component {
             <div className="App">
                 <StaffHeader />
                 <Switch>
+                    <Route exact path="/home" component={() => <HomePage />} />
                     <Route exact path="/nhanvien" component={() => <StaffMenu staffs={this.state.staffs} />} />
                     <Route path="/nhanvien/:staffId" component={StaffWidthId} />
                     <Route exact path="/phongban" component={() => <Deapartments departments={this.state.departments} />} />
                     <Route exact path="/bangluong" component={() => <SalaryStaff staffs={this.state.staffs} />} />
-                    <Redirect to="/nhanvien" />
+                    <Redirect to="/home" />
                 </Switch>
                 <StaffFooter />
             </div>
