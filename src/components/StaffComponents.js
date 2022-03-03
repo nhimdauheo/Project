@@ -1,18 +1,28 @@
 import React, { Component } from "react";
-import { CardImg, Card, CardTitle, Input, Button, Form, FormGroup, Label, Col } from "reactstrap"
+import { CardImg, Card, CardTitle, Input, Button, Form, FormGroup, Col } from "reactstrap"
 import { Link } from 'react-router-dom'
 
 class StaffMenu extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            searchTerm: '',
+        }
 
     }
-
+    onChangeSearchTerm = (e) => {
+        this.setState({
+            searchTerm: e.target.value
+        });
+    }
+    handleSearch = (staffs) => {
+        return staffs.filter(f => f.name.toLowerCase().includes(this.state.searchTerm.trim().toLowerCase()));
+    }
     // Xử lý để hiện thị data trong file staffs.jsx
     render() {
-
+        const staffFiltered = this.handleSearch(this.props.staffs);
         // Sử dụng ArrayFunction để duyệt object
-        const staff = this.props.staffs.map((staff) => {
+        const staff = staffFiltered.map((staff) => {
             return (
                 <div key={staff.id} className="col-6 col-sm-6 col-md-4 col-lg-2 p-2">
                     <Card inverse color="info">
@@ -33,12 +43,14 @@ class StaffMenu extends Component {
                                 <h3><i class="fa fa-user-circle" aria-hidden="true"></i> Nhân viên</h3>
                             </div>
                             <div className="col-6">
-                                <Form>
+                                <Form >
                                     <FormGroup row>
                                         <Col sm={8}>
-                                            <Input type="text" name="search" id="search"/>
+                                            <Input type="text" name="valueSearch" id="valueSearch"
+                                                value={this.state.searchTerm} onChange={this.onChangeSearchTerm}
+                                            />
                                         </Col>
-                                      <Button color="primary">Tìm</Button>
+                                        <Button type="submit" color="primary" >Tìm</Button>
                                     </FormGroup>
                                 </Form>
                             </div>
