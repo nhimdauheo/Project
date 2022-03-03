@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom'
 class StaffMenu extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            searchItem: ''
+        }
 
     }
 
