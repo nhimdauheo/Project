@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { CardImg, Card, CardTitle, Input, Button, Form, FormGroup, Col, Modal, ModalBody, Label, ModalHeader } from "reactstrap"
 import { Link } from 'react-router-dom'
-import { Control, LocalForm, Errors } from 'react-redux-form'
+import { Control, LocalForm } from 'react-redux-form'
 
 class StaffMenu extends Component {
     constructor(props) {
@@ -61,7 +61,7 @@ class StaffMenu extends Component {
                             <div className="col-3">
                                 <Button onClick={this.toggleModel} className="fa fa-plus fa-lg" color="primary" ></Button>
                                 <Modal isOpen={this.state.isModelOpen} toggle={this.toggleModel}>
-                                    <ModalHeader toggle={this.toggleModel}>Submit Contents</ModalHeader>
+                                    <ModalHeader toggle={this.toggleModel}>Thêm nhân viên</ModalHeader>
                                     <ModalBody>
                                         <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
                                             <FormGroup>
@@ -75,7 +75,7 @@ class StaffMenu extends Component {
                                             <FormGroup>
                                                 <Label HtmlFor="birth" >Ngày sinh:</Label>
                                                 <Col>
-                                                    <Control.date model=".birth" id="birth" name="birth"
+                                                    <Input type="date" model=".birth" id="birth" name="birth"
                                                         className="form-control"
                                                     />
                                                 </Col>
@@ -83,7 +83,7 @@ class StaffMenu extends Component {
                                             <FormGroup >
                                                 <Label HtmlFor="birthin" >Ngày vào công ty:</Label>
                                                 <Col>
-                                                    <Control.date model=".birthin" id="birthin" name="birthin"
+                                                    <Input type="date" model=".birthin" id="birthin" name="birthin"
                                                         className="form-control"
                                                     />
                                                 </Col>
