@@ -8,12 +8,12 @@ class StaffMenu extends Component {
         super(props);
         this.state = {
             searchTerm: '',
-            isModelOpen: false
+            isModelOpen: false,
+            staffs: this.props.staffs
         }
-
+        
         this.toggleModel = this.toggleModel.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
-        this.onChangeSearchTerm = this.onChangeSearchTerm.bind(this)
     }
 
     toggleModel() {
@@ -22,11 +22,26 @@ class StaffMenu extends Component {
         })
     }
     handleSubmit(values) {
-        console.log("Current state is: " + JSON.stringify(values));
-        alert("Current state is: " + JSON.stringify(values));
+        this.toggleModel()
+        const  newStaff = {
+            name: values.name,
+            doB: values.doB,
+            salaryScale: values.salaryScale,
+            startDate: values.startDate,
+            department: values.department,
+            annualLeave: values.annualLeave,
+            overTime: values.overTime,
+            salary: values.salary,
+            image: '/assets/images/alberto.png',
+        }
+       const addStaffs = this.state.staffs
+       addStaffs.push(newStaff)
+        this.setState({
+            staffs: addStaffs
+        })
     }
 
-    onChangeSearchTerm(e){
+    onChangeSearchTerm = (e) => {
         this.setState({
             searchTerm: e.target.value
         });
@@ -36,7 +51,7 @@ class StaffMenu extends Component {
     }
     // Xử lý để hiện thị data trong file staffs.jsx
     render() {
-        const staffFiltered = this.handleSearch(this.props.staffs);
+        const staffFiltered = this.handleSearch(this.state.staffs);
         // Sử dụng ArrayFunction để duyệt object
         const staff = staffFiltered.map((staff) => {
             return (
@@ -65,33 +80,33 @@ class StaffMenu extends Component {
                                     <ModalBody>
                                         <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
                                             <FormGroup>
-                                                <Label HtmlFor="yourname" >Tên:</Label>
+                                                <Label HtmlFor="name" >Tên:</Label>
                                                 <Col>
-                                                    <Control.text model=".yourname" id="yourname" name="yourname"
+                                                    <Control.text model=".name" id="name" name="name"
                                                         className="form-control"
                                                     />
                                                 </Col>
                                             </FormGroup>
                                             <FormGroup>
-                                                <Label HtmlFor="birth" >Ngày sinh:</Label>
+                                                <Label HtmlFor="doB" >Ngày sinh:</Label>
                                                 <Col>
-                                                    <Input type="date" model=".birth" id="birth" name="birth"
+                                                    <Control.input type="date" model=".doB" id="doB" name="doB"
                                                         className="form-control"
                                                     />
                                                 </Col>
                                             </FormGroup>
                                             <FormGroup >
-                                                <Label HtmlFor="birthin" >Ngày vào công ty:</Label>
+                                                <Label HtmlFor="startDate" >Ngày vào công ty:</Label>
                                                 <Col>
-                                                    <Input type="date" model=".birthin" id="birthin" name="birthin"
+                                                    <Control.input type="date" model=".startDate" id="startDate" name="startDate"
                                                         className="form-control"
                                                     />
                                                 </Col>
                                             </FormGroup>
                                             <FormGroup >
-                                                <Label HtmlFor="deparment" >Phòng ban:</Label>
+                                                <Label HtmlFor="department" >Phòng ban:</Label>
                                                 <Col>
-                                                    <Control.select model=".deparment" name="deparment"
+                                                    <Control.select model=".department" name="department"
                                                         className="form-control" >
                                                         <option>Sale</option>
                                                         <option>HR</option>
@@ -102,25 +117,25 @@ class StaffMenu extends Component {
                                                 </Col>
                                             </FormGroup>
                                             <FormGroup>
-                                                <Label HtmlFor="salary" >Hệ số lương:</Label>
+                                                <Label HtmlFor="salaryScale" >Hệ số lương:</Label>
                                                 <Col>
-                                                    <Control.text model=".salary" id="salary" name="salary"
+                                                    <Control.text model=".salaryScale" id="salaryScale" name="salaryScale"
                                                         className="form-control"
                                                     />
                                                 </Col>
                                             </FormGroup>
                                             <FormGroup>
-                                                <Label HtmlFor="offf" >Số ngày nghỉ còn lại:</Label>
+                                                <Label HtmlFor="annualLeave" >Số ngày nghỉ còn lại:</Label>
                                                 <Col>
-                                                    <Control.text model=".offf" id="offf" name="offf"
+                                                    <Control.text model=".annualLeave" id="annualLeave" name="annualLeave"
                                                         className="form-control"
                                                     />
                                                 </Col>
                                             </FormGroup>
                                             <FormGroup>
-                                                <Label HtmlFor="inn" >Số ngày đã làm thêm:</Label>
+                                                <Label HtmlFor="overTime" >Số ngày đã làm thêm:</Label>
                                                 <Col>
-                                                    <Control.text model=".inn" id="inn" name="inn"
+                                                    <Control.text model=".overTime" id="overTime" name="overTime"
                                                         className="form-control"
                                                     />
                                                 </Col>
