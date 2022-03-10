@@ -151,9 +151,10 @@ class StaffMenu extends Component {
                                         <Col sm={8}>
                                             <Input type="text" name="valueSearch" id="valueSearch"
                                                 value={this.state.searchTerm} onChange={this.onChangeSearchTerm}
+                                                placeholder='Hãy nhập tên nhân viên muốn tìm'
                                             />
                                         </Col>
-                                        <Button type="submit" color="primary" >Tìm</Button>
+                                        
                                     </FormGroup>
                                 </Form>
                             </div>

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
-import { STAFFS, DEPARTMENTS } from "../data/staffs"
+import { Redirect, Route, Switch, withRouter } from "react-router-dom";
 import Deapartments from "./DepartmentsComponent";
 import SalaryStaff from "./SalaryComponent";
 import StaffMenu from "./StaffComponents";
@@ -8,14 +7,17 @@ import StaffFooter from "./StaffFooterComponent";
 import StaffHeader from "./StaffHeaderComponent";
 import StaffDetail from "./StaffDetailComponent"
 import HomeStaff from "./StaffHomeComponent";
+import { connect } from "react-redux";
 
+const mapStateToProps = state => {
+    return {
+        staffs: state.staffs,
+        departments: state.departments
+    }
+}
 class MainStaff extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            staffs: STAFFS,
-            departments: DEPARTMENTS,
-        };
     };
 
     render() {
@@ -36,10 +38,10 @@ class MainStaff extends Component {
                 <StaffHeader />
                 <Switch>
                     <Route exact path="/home" component={() => <HomePage />} />
-                    <Route exact path="/nhanvien" component={() => <StaffMenu staffs={this.state.staffs} />} />
+                    <Route exact path="/nhanvien" component={() => <StaffMenu staffs={this.props.staffs} />} />
                     <Route path="/nhanvien/:staffId" component={StaffWidthId} />
-                    <Route exact path="/phongban" component={() => <Deapartments departments={this.state.departments} />} />
-                    <Route exact path="/bangluong" component={() => <SalaryStaff staffs={this.state.staffs} />} />
+                    <Route exact path="/phongban" component={() => <Deapartments departments={this.props.departments} />} />
+                    <Route exact path="/bangluong" component={() => <SalaryStaff staffs={this.props.staffs} />} />
                     <Redirect to="/home" />
                 </Switch>
                 <StaffFooter />
@@ -48,4 +50,4 @@ class MainStaff extends Component {
     }
 }
 
-export default MainStaff;
+export default  withRouter(connect(mapStateToProps)(MainStaff));
