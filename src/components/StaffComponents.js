@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { CardImg, Card, CardTitle, Input, Button, Form, FormGroup, Col, Modal, ModalBody, Label, ModalHeader } from "reactstrap"
+import { CardImg, Card, CardTitle, Input, Button, Form, FormGroup, Col, Modal, ModalBody, Label, ModalHeader, FormFeedback } from "reactstrap"
 import { Link } from 'react-router-dom'
 import { Control, LocalForm } from 'react-redux-form'
 
@@ -9,11 +9,52 @@ class StaffMenu extends Component {
         this.state = {
             searchTerm: '',
             isModelOpen: false,
-            staffs: this.props.staffs
+            staffs: this.props.staffs,
+            touched: {
+                name: false,
+                doB: false,
+                startDate: false
+            }
         }
-        
+
         this.toggleModel = this.toggleModel.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+    }
+    handleInputChange = (event) => {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        })
+    }
+    validate(name, doB, startDate) {
+        const error = {
+            name: '',
+            doB: '',
+            startDate: '',
+        };
+        
+        if(!this.state.touched.name)
+            error.name='Yêu cầu nhập'
+        else if (this.state.touched.name && name.length < 3)
+            error.name = 'Phải có 2 kí tự trở lên';
+        else if (this.state.touched.name && name.length > 15)
+            error.firstname = 'Phải ít hơn 15 kí tự';
+
+        if (!this.state.touched.doB)
+            error.doB = 'Yêu cầu nhập';
+
+        if (!this.state.touched.startDate)
+            error.startDate = 'Yêu cầu nhập';
+
+        return error
+    }
+    handleBlur = (field) => (evt) => {
+        this.setState({
+            touched: { ...this.state.touched, [field]: true }
+        });
     }
 
     toggleModel() {
@@ -23,7 +64,7 @@ class StaffMenu extends Component {
     }
     handleSubmit(values) {
         this.toggleModel()
-        const  newStaff = {
+        const newStaff = {
             name: values.name,
             doB: values.doB,
             salaryScale: values.salaryScale,
@@ -34,8 +75,8 @@ class StaffMenu extends Component {
             salary: values.salary,
             image: '/assets/images/alberto.png',
         }
-       const addStaffs = this.state.staffs
-       addStaffs.push(newStaff)
+        const addStaffs = this.state.staffs
+        addStaffs.push(newStaff)
         this.setState({
             staffs: addStaffs
         })
@@ -52,6 +93,7 @@ class StaffMenu extends Component {
     // Xử lý để hiện thị data trong file staffs.jsx
     render() {
         const staffFiltered = this.handleSearch(this.state.staffs);
+        const error = this.validate(this.state.name, this.state.doB, this.state.startDate)
         // Sử dụng ArrayFunction để duyệt object
         const staff = staffFiltered.map((staff) => {
             return (
@@ -78,13 +120,19 @@ class StaffMenu extends Component {
                                 <Modal isOpen={this.state.isModelOpen} toggle={this.toggleModel}>
                                     <ModalHeader toggle={this.toggleModel}>Thêm nhân viên</ModalHeader>
                                     <ModalBody>
-                                        <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
+                                        <Form onSubmit={this.handleSubmit}>
                                             <FormGroup>
                                                 <Label HtmlFor="name" >Tên:</Label>
                                                 <Col>
-                                                    <Control.text model=".name" id="name" name="name"
+                                                    <Input type="text" model=".name" id="name" name="name"
                                                         className="form-control"
+                                                        value={this.state.name}
+                                                        valid={error.name === ''}
+                                                        invalid={error.name !== ''}
+                                                        onBlur={this.handleBlur('name')}
+                                                        onChange={this.handleInputChange} 
                                                     />
+                                                    <FormFeedback>{error.name}</FormFeedback>
                                                 </Col>
                                             </FormGroup>
                                             <FormGroup>
@@ -92,7 +140,13 @@ class StaffMenu extends Component {
                                                 <Col>
                                                     <Input type="date" model=".doB" id="doB" name="doB"
                                                         className="form-control"
+                                                        value={this.state.doB}
+                                                        valid={error.doB === ''}
+                                                        invalid={error.doB !== ''}
+                                                        onBlur={this.handleBlur('doB')}
+                                                        onChange={this.handleInputChange} 
                                                     />
+                                                    <FormFeedback>{error.doB}</FormFeedback>
                                                 </Col>
                                             </FormGroup>
                                             <FormGroup >
@@ -100,7 +154,13 @@ class StaffMenu extends Component {
                                                 <Col>
                                                     <Input type="date" model=".startDate" id="startDate" name="startDate"
                                                         className="form-control"
+                                                        value={this.state.startDate}
+                                                        valid={error.startDate === ''}
+                                                        invalid={error.startDate !== ''}
+                                                        onBlur={this.handleBlur('startDate')}
+                                                        onChange={this.handleInputChange} 
                                                     />
+                                                    <FormFeedback>{error.startDate}</FormFeedback>
                                                 </Col>
                                             </FormGroup>
                                             <FormGroup >
@@ -119,7 +179,7 @@ class StaffMenu extends Component {
                                             <FormGroup>
                                                 <Label HtmlFor="salaryScale" >Hệ số lương:</Label>
                                                 <Col>
-                                                    <Input model=".salaryScale" id="salaryScale" name="salaryScale"
+                                                    <Input type="text" model=".salaryScale" id="salaryScale" name="salaryScale"
                                                         className="form-control"
                                                     />
                                                 </Col>
@@ -127,7 +187,7 @@ class StaffMenu extends Component {
                                             <FormGroup>
                                                 <Label HtmlFor="annualLeave" >Số ngày nghỉ còn lại:</Label>
                                                 <Col>
-                                                    <Input model=".annualLeave" id="annualLeave" name="annualLeave"
+                                                    <Input type="text" model=".annualLeave" id="annualLeave" name="annualLeave"
                                                         className="form-control"
                                                     />
                                                 </Col>
@@ -135,13 +195,13 @@ class StaffMenu extends Component {
                                             <FormGroup>
                                                 <Label HtmlFor="overTime" >Số ngày đã làm thêm:</Label>
                                                 <Col>
-                                                    <Input model=".overTime" id="overTime" name="overTime"
+                                                    <Input type="text" model=".overTime" id="overTime" name="overTime"
                                                         className="form-control"
                                                     />
                                                 </Col>
                                             </FormGroup>
                                             <Button type="submit" value="submit" className="bg-primary">Thêm</Button>
-                                        </LocalForm>
+                                        </Form>
                                     </ModalBody>
                                 </Modal>
                             </div>
@@ -154,7 +214,7 @@ class StaffMenu extends Component {
                                                 placeholder='Hãy nhập tên nhân viên muốn tìm'
                                             />
                                         </Col>
-                                        
+
                                     </FormGroup>
                                 </Form>
                             </div>
