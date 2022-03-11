@@ -90,7 +90,7 @@ class StaffMenu extends Component {
                                             <FormGroup>
                                                 <Label HtmlFor="doB" >Ngày sinh:</Label>
                                                 <Col>
-                                                    <Control.input type="date" model=".doB" id="doB" name="doB"
+                                                    <Input type="date" model=".doB" id="doB" name="doB"
                                                         className="form-control"
                                                     />
                                                 </Col>
@@ -98,7 +98,7 @@ class StaffMenu extends Component {
                                             <FormGroup >
                                                 <Label HtmlFor="startDate" >Ngày vào công ty:</Label>
                                                 <Col>
-                                                    <Control.input type="date" model=".startDate" id="startDate" name="startDate"
+                                                    <Input type="date" model=".startDate" id="startDate" name="startDate"
                                                         className="form-control"
                                                     />
                                                 </Col>
@@ -106,20 +106,20 @@ class StaffMenu extends Component {
                                             <FormGroup >
                                                 <Label HtmlFor="department" >Phòng ban:</Label>
                                                 <Col>
-                                                    <Control.select model=".department" name="department"
+                                                    <Input type="select" model=".department" name="department"
                                                         className="form-control" >
                                                         <option>Sale</option>
                                                         <option>HR</option>
                                                         <option>Marketing</option>
                                                         <option>IT</option>
                                                         <option>Finance</option>
-                                                    </Control.select>
+                                                    </Input>
                                                 </Col>
                                             </FormGroup>
                                             <FormGroup>
                                                 <Label HtmlFor="salaryScale" >Hệ số lương:</Label>
                                                 <Col>
-                                                    <Control.text model=".salaryScale" id="salaryScale" name="salaryScale"
+                                                    <Input model=".salaryScale" id="salaryScale" name="salaryScale"
                                                         className="form-control"
                                                     />
                                                 </Col>
@@ -127,7 +127,7 @@ class StaffMenu extends Component {
                                             <FormGroup>
                                                 <Label HtmlFor="annualLeave" >Số ngày nghỉ còn lại:</Label>
                                                 <Col>
-                                                    <Control.text model=".annualLeave" id="annualLeave" name="annualLeave"
+                                                    <Input model=".annualLeave" id="annualLeave" name="annualLeave"
                                                         className="form-control"
                                                     />
                                                 </Col>
@@ -135,7 +135,7 @@ class StaffMenu extends Component {
                                             <FormGroup>
                                                 <Label HtmlFor="overTime" >Số ngày đã làm thêm:</Label>
                                                 <Col>
-                                                    <Control.text model=".overTime" id="overTime" name="overTime"
+                                                    <Input model=".overTime" id="overTime" name="overTime"
                                                         className="form-control"
                                                     />
                                                 </Col>
