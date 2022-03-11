@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { CardImg, Card, CardTitle, Input, Button, Form, FormGroup, Col, Modal, ModalBody, Label, ModalHeader } from "reactstrap"
 import { Link } from 'react-router-dom'
-import { Control, LocalForm } from 'react-redux-form'
+import { Control, LocalForm, Errors } from 'react-redux-form'
+
+const required = (val) => val && val.length;
+const maxLength = (len) => (val) => !(val) || (val.length <= len)
+const minLength = (len) => (val) => (val) && (val.length >= len)
 
 class StaffMenu extends Component {
     constructor(props) {
@@ -11,7 +15,7 @@ class StaffMenu extends Component {
             isModelOpen: false,
             staffs: this.props.staffs
         }
-        
+
         this.toggleModel = this.toggleModel.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
@@ -23,7 +27,7 @@ class StaffMenu extends Component {
     }
     handleSubmit(values) {
         this.toggleModel()
-        const  newStaff = {
+        const newStaff = {
             name: values.name,
             doB: values.doB,
             salaryScale: values.salaryScale,
@@ -34,8 +38,8 @@ class StaffMenu extends Component {
             salary: values.salary,
             image: '/assets/images/alberto.png',
         }
-       const addStaffs = this.state.staffs
-       addStaffs.push(newStaff)
+        const addStaffs = this.state.staffs
+        addStaffs.push(newStaff)
         this.setState({
             staffs: addStaffs
         })
@@ -84,7 +88,16 @@ class StaffMenu extends Component {
                                                 <Col>
                                                     <Control.text model=".name" id="name" name="name"
                                                         className="form-control"
+                                                        validators={{
+                                                            required, minLength: minLength(3), maxLength: maxLength(15)
+                                                        }}
                                                     />
+                                                    <Errors className="text-danger" model=".name" show="touched"
+                                                        messages={{
+                                                            required: 'Yêu cầu nhập ',
+                                                            minLength: '.Phải nhiểu hơn 2 kí tự',
+                                                            maxLength: '.Phải ít hơn 15 kí tự',
+                                                        }} />
                                                 </Col>
                                             </FormGroup>
                                             <FormGroup>
@@ -92,7 +105,15 @@ class StaffMenu extends Component {
                                                 <Col>
                                                     <Control.input type="date" model=".doB" id="doB" name="doB"
                                                         className="form-control"
+                                                        validators={{
+                                                            required
+                                                        }}
                                                     />
+                                                    <Errors className="text-danger" model=".doB" show="touched"
+                                                        messages={{
+                                                            required: 'Yêu cầu nhập',
+                                                            
+                                                        }} />
                                                 </Col>
                                             </FormGroup>
                                             <FormGroup >
@@ -100,7 +121,15 @@ class StaffMenu extends Component {
                                                 <Col>
                                                     <Control.input type="date" model=".startDate" id="startDate" name="startDate"
                                                         className="form-control"
+                                                        validators={{
+                                                            required
+                                                        }}
                                                     />
+                                                     <Errors className="text-danger" model=".startDate" show="touched"
+                                                        messages={{
+                                                            required: 'Yêu cầu nhập',
+                                                            
+                                                        }} />
                                                 </Col>
                                             </FormGroup>
                                             <FormGroup >
@@ -154,7 +183,7 @@ class StaffMenu extends Component {
                                                 placeholder='Hãy nhập tên nhân viên muốn tìm'
                                             />
                                         </Col>
-                                        
+
                                     </FormGroup>
                                 </Form>
                             </div>
