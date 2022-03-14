@@ -8,6 +8,7 @@ export const Staffs = (state = STAFFS, action) => {
             staff.id = state.length;
             staff.doB = new Date().toISOString();
             staff.startDate = new Date().toISOString(); 
+            staff.image = '/assets/images/alberto.png';
             console.log("Staff: ", staff);
             return state.concat(staff)
         default: 

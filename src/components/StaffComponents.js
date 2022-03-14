@@ -14,10 +14,12 @@ class StaffMenu extends Component {
             searchTerm: '',
             isModelOpen: false,
             staffs: this.props.staffs
+            
         }
 
         this.toggleModel = this.toggleModel.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+       
     }
 
     toggleModel() {
@@ -25,24 +27,9 @@ class StaffMenu extends Component {
             isModelOpen: !this.state.isModelOpen
         })
     }
-    handleSubmit(values) {
+    handleSubmit (values){
         this.toggleModel()
-        const newStaff = {
-            name: values.name,
-            doB: values.doB,
-            salaryScale: values.salaryScale,
-            startDate: values.startDate,
-            department: values.department,
-            annualLeave: values.annualLeave,
-            overTime: values.overTime,
-            salary: values.salary,
-            image: '/assets/images/alberto.png',
-        }
-        const addStaffs = this.state.staffs
-        addStaffs.push(newStaff)
-        this.setState({
-            staffs: addStaffs
-        })
+        this.props.addStaff(values.name, values.doB, values.startDate, values.department, values.salaryScale, values.annualLeave, values.overTime)
     }
 
     onChangeSearchTerm = (e) => {
