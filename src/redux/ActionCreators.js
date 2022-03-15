@@ -1,4 +1,4 @@
-import { STAFFS } from '../data/staffs';
+import { STAFFS, DEPARTMENTS } from '../data/staffs';
 import * as ActionTypes from './ActionTypes'
 
 export const addStaff = ( name, doB, startDate, department, salaryScale, annualLeave, overTime) => ({
@@ -23,8 +23,21 @@ export const fetchStaffs = () => (dispatch) => {
     }, 2000);
 }
 
+export const fetchDepartments = () => (dispatch) => {
+
+    dispatch(departmentsLoading(true));
+
+    setTimeout(() => {
+        dispatch(addDepartments(DEPARTMENTS));
+    }, 2000);
+}
+
 export const staffsLoading = () => ({
     type: ActionTypes.STAFF_LOADING
+})
+
+export const departmentsLoading = () => ({
+    type: ActionTypes.DEPARTMENTS_LOADING
 })
 
 export const staffsFailed = (errmess) => ({
@@ -32,7 +45,17 @@ export const staffsFailed = (errmess) => ({
     payload: errmess
 })
 
+export const departmentsFailed = (errmess) => ({
+    type: ActionTypes.DEPARTMENTS_FAILED,
+    payload: errmess
+})
+
 export const addStaffs = (staffs) => ({
     type: ActionTypes.ADD_STAFFS,
     payload: staffs
+})
+
+export const addDepartments = (departments) => ({
+    type: ActionTypes.ADD_DEPARTMENTS,
+    payload: departments
 })

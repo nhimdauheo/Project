@@ -8,7 +8,7 @@ import StaffHeader from "./StaffHeaderComponent";
 import StaffDetail from "./StaffDetailComponent"
 import HomeStaff from "./StaffHomeComponent";
 import { connect } from "react-redux";
-import { addStaff, fetchStaffs } from "../redux/ActionCreators";
+import { addStaff, fetchStaffs, fetchDepartments } from "../redux/ActionCreators";
 
 
 const mapStateToProps = state => {
@@ -19,7 +19,8 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = (dispatch) => ({
     addStaff: (name, doB, startDate, department, salaryScale, annualLeave, overTime) => dispatch(addStaff(name, doB, startDate, department, salaryScale, annualLeave, overTime)),
-    fetchStaffs: () => { dispatch(fetchStaffs()) }
+    fetchStaffs: () => { dispatch(fetchStaffs()) },
+    fetchDepartments: () => { dispatch(fetchDepartments()) }
 })
 class MainStaff extends Component {
     constructor(props) {
@@ -27,6 +28,7 @@ class MainStaff extends Component {
     };
     componentDidMount() {
         this.props.fetchStaffs();
+        this.props.fetchDepartments();
     }
 
     render() {
@@ -54,8 +56,13 @@ class MainStaff extends Component {
                         isLoading={this.props.staffs.isLoading}
                         errMess={this.props.staffs.errMess} />} />
                     <Route path="/nhanvien/:staffId" component={StaffWidthId} />
-                    <Route exact path="/phongban" component={() => <Deapartments departments={this.props.departments} />} />
-                    <Route exact path="/bangluong" component={() => <SalaryStaff staffs={this.props.staffs} />} />
+                    <Route exact path="/phongban" component={() => <Deapartments departments={this.props.departments.departments}
+                        addDepartments={this.props.addDepartments}
+                        isLoading={this.props.departments.isLoading}
+                        errMess={this.props.departments.errMess} />} />
+                    <Route exact path="/bangluong" component={() => <SalaryStaff staffs={this.props.staffs.staffs}
+                        isLoading={this.props.staffs.isLoading}
+                        errMess={this.props.staffs.errMess} />} />
                     <Redirect to="/home" />
                 </Switch>
                 <StaffFooter />
