@@ -1,5 +1,5 @@
-import { STAFFS, DEPARTMENTS } from '../data/staffs';
 import * as ActionTypes from './ActionTypes'
+import {baseUrl} from '../data/staffBaseUrl'
 
 export const addStaff = ( name, doB, startDate, department, salaryScale, annualLeave, overTime) => ({
     type: ActionTypes.ADD_STAFF,
@@ -15,21 +15,17 @@ export const addStaff = ( name, doB, startDate, department, salaryScale, annualL
 })
 
 export const fetchStaffs = () => (dispatch) => {
-
     dispatch(staffsLoading(true));
-
-    setTimeout(() => {
-        dispatch(addStaffs(STAFFS));
-    }, 2000);
+    return fetch (baseUrl + 'staffs')
+        .then(response => response.json())
+        .then(staffs => dispatch(addStaffs(staffs)))
 }
 
 export const fetchDepartments = () => (dispatch) => {
-
     dispatch(departmentsLoading(true));
-
-    setTimeout(() => {
-        dispatch(addDepartments(DEPARTMENTS));
-    }, 2000);
+    return fetch(baseUrl + 'departments')
+        .then(response => response.json())
+        .then(departments => dispatch(addDepartments(departments)))
 }
 
 export const staffsLoading = () => ({

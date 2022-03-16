@@ -3,6 +3,7 @@ import { CardImg, Card, CardTitle, Input, Button, Form, FormGroup, Col, Modal, M
 import { Link } from 'react-router-dom'
 import { Control, LocalForm, Errors } from 'react-redux-form'
 import { Loading } from './StaffLoadingComponent'
+import { baseUrl } from "../data/staffBaseUrl";
 
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len)
@@ -50,11 +51,11 @@ class StaffMenu extends Component {
                 <div key={staff.id} className="col-6 col-sm-6 col-md-4 col-lg-2 p-2">
                     <Card inverse color="info">
                         <Link to={`/nhanvien/${staff.id}/`}>
-                            <CardImg width="100%" src={staff.image} alt={staff.name} />
+                            <CardImg width="100%" src={ baseUrl + staff.image} alt={staff.name} />
                             <CardTitle style={{ textAlign: "center", color: "white" }}>{staff.name}</CardTitle>
                         </Link>
                     </Card>
-                </div>
+                </div>      
             )
         });
         if (this.props.isLoading) {
