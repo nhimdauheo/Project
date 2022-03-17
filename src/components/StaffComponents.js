@@ -43,7 +43,7 @@ class StaffMenu extends Component {
     }
     // Xử lý để hiện thị data trong file staffs.jsx
     render() {
-        const staffFiltered = this.handleSearch(this.state.staffs);
+        const staffFiltered = this.handleSearch(this.props.staffs.staffs);
         // Sử dụng ArrayFunction để duyệt object
         const staff = staffFiltered.map((staff) => {
             return (
@@ -57,7 +57,7 @@ class StaffMenu extends Component {
                 </div>      
             )
         });
-        if (this.props.isLoading) {
+        if (this.props.staffs.isLoading) {
             return (
                 <div className="container">
                     <div className="row">
@@ -66,11 +66,11 @@ class StaffMenu extends Component {
                 </div>
             );
         }
-        else if (this.props.errMess) {
+        else if (this.props.staffs.errMess) {
             return (
                 <div className="container">
                     <div className="row">
-                        <h4>{this.props.errMess}</h4>
+                        <h4>{this.props.staffs.errMess}</h4>
                     </div>
                 </div>
             );

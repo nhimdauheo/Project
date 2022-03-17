@@ -1,7 +1,6 @@
 import * as ActionTypes from './ActionTypes';
 
 export const Staffs = (state = {
-    isLoading: true,
     errMess: null,
     staffs: []
 }, action) => {
@@ -17,7 +16,7 @@ export const Staffs = (state = {
 
         case ActionTypes.ADD_STAFF:
             var staff = action.payload;
-            staff.id = state.length;
+            staff.id = state.staffs.length;
             staff.doB = new Date().toISOString();
             staff.startDate = new Date().toISOString();
             staff.image = '/assets/images/alberto.png';

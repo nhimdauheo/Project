@@ -39,19 +39,18 @@ class MainStaff extends Component {
         }
         const StaffWidthId = ({ match }) => {
             return (
-                <StaffDetail staff={this.state.staffs.staffs.filter((staff) => staff.id === parseInt(match.params.staffId, 10))[0]}
-                />
+                <StaffDetail staff={this.props.staffs.staffs.filter((staff) => staff.id === parseInt(match.params.staffId, 10))[0]}
+                 />
             )
-
-
-        }; console.log(this.props)
+        }; 
+        console.log(this.props)
 
         return (
             <div className="App">
                 <StaffHeader />
                 <Switch>
                     <Route exact path="/home" component={() => <HomePage />} />
-                    <Route exact path="/nhanvien" component={() => <StaffMenu staffs={this.props.staffs.staffs}
+                    <Route exact path="/nhanvien" component={() => <StaffMenu staffs={this.props.staffs}
                         addStaff={this.props.addStaff}
                         isLoading={this.props.staffs.isLoading}
                         errMess={this.props.staffs.errMess} />} />
