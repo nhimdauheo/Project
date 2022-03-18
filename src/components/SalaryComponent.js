@@ -8,7 +8,7 @@ class SalaryStaff extends Component {
         super(props)
     }
     render() {
-        const salary = this.props.staffs.map((salary) => {
+        const salary = this.props.salarys.salarys.map((salary) => {
             return (
                 <div key={salary.id} className="col-12 col-md-6 col-lg-4 p-2">
                     <Card body>

@@ -8,19 +8,21 @@ import StaffHeader from "./StaffHeaderComponent";
 import StaffDetail from "./StaffDetailComponent"
 import HomeStaff from "./StaffHomeComponent";
 import { connect } from "react-redux";
-import { addStaff, fetchStaffs, fetchDepartments } from "../redux/ActionCreators";
+import { addStaff, fetchStaffs, fetchDepartments, fetchSalarys } from "../redux/ActionCreators";
 
 
 const mapStateToProps = state => {
     return {
         staffs: state.staffs,
-        departments: state.departments
+        departments: state.departments,
+        salarys: state.salarys
     }
 }
 const mapDispatchToProps = (dispatch) => ({
     addStaff: (name, doB, startDate, department, salaryScale, annualLeave, overTime) => dispatch(addStaff(name, doB, startDate, department, salaryScale, annualLeave, overTime)),
     fetchStaffs: () => { dispatch(fetchStaffs()) },
-    fetchDepartments: () => { dispatch(fetchDepartments()) }
+    fetchDepartments: () => { dispatch(fetchDepartments()) },
+    fetchSalarys: () => { dispatch(fetchSalarys()) }
 })
 class MainStaff extends Component {
     constructor(props) {
@@ -29,6 +31,7 @@ class MainStaff extends Component {
     componentDidMount() {
         this.props.fetchStaffs();
         this.props.fetchDepartments();
+        this.props.fetchSalarys();
     }
 
     render() {
@@ -59,7 +62,7 @@ class MainStaff extends Component {
                         addDepartments={this.props.addDepartments}
                         isLoading={this.props.departments.isLoading}
                         errMess={this.props.departments.errMess} />} />
-                    <Route exact path="/bangluong" component={() => <SalaryStaff staffs={this.props.staffs.staffs}
+                    <Route exact path="/bangluong" component={() => <SalaryStaff salarys={this.props.salarys}
                         isLoading={this.props.staffs.isLoading}
                         errMess={this.props.staffs.errMess} />} />
                     <Redirect to="/home" />

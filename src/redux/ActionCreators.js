@@ -28,12 +28,23 @@ export const fetchDepartments = () => (dispatch) => {
         .then(departments => dispatch(addDepartments(departments)))
 }
 
+export const fetchSalarys = () => (dispatch) => {
+    dispatch(salarysLoading(true));
+    return fetch(baseUrl + 'staffsSalary')
+        .then(response => response.json())
+        .then(salarys => dispatch(addSalarys(salarys)))
+}
+
 export const staffsLoading = () => ({
     type: ActionTypes.STAFF_LOADING
 })
 
 export const departmentsLoading = () => ({
     type: ActionTypes.DEPARTMENTS_LOADING
+})
+
+export const salarysLoading = () => ({
+    type: ActionTypes.SALARYS_LOADING
 })
 
 export const staffsFailed = (errmess) => ({
@@ -46,6 +57,11 @@ export const departmentsFailed = (errmess) => ({
     payload: errmess
 })
 
+export const salarysFailed = (errmess) => ({
+    type: ActionTypes.SALARYS_FAILED,
+    payload: errmess
+})
+
 export const addStaffs = (staffs) => ({
     type: ActionTypes.ADD_STAFFS,
     payload: staffs
@@ -54,4 +70,9 @@ export const addStaffs = (staffs) => ({
 export const addDepartments = (departments) => ({
     type: ActionTypes.ADD_DEPARTMENTS,
     payload: departments
+})
+
+export const addSalarys = (salarys) => ({
+    type: ActionTypes.ADD_SALARYS,
+    payload: salarys
 })
