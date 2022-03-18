@@ -70,7 +70,7 @@ export const postStaff =  (name, doB, startDate, department, salaryScale, annual
         throw errmess
     })
     .then(response => response.json())
-    .then(response => dispatch(addStaff(response)))
+    .then(response => dispatch(addStaffs(response)))
     .catch(error => {console.log('Post Staff', error.message)
             alert('Your staff could not be posted\nError: ' + error.message) })
 }
