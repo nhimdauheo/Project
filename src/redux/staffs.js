@@ -16,11 +16,6 @@ export const Staffs = (state = {
 
         case ActionTypes.ADD_STAFF:
             var staff = action.payload;
-            staff.id = state.staffs.length;
-            staff.doB = new Date().toISOString();
-            staff.startDate = new Date().toISOString();
-            staff.image = '/assets/images/alberto.png';
-            console.log("Staff: ", staff);
             return  {...state, staffs : state.staffs.concat(staff)}
         default:
             return state

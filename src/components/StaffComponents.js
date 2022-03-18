@@ -30,7 +30,7 @@ class StaffMenu extends Component {
     }
     handleSubmit(values) {
         this.toggleModel()
-        this.props.addStaff(values.name, values.doB, values.startDate, values.department, values.salaryScale, values.annualLeave, values.overTime)
+        this.props.postStaff(values.name, values.doB, values.startDate, values.department, values.salaryScale, values.annualLeave, values.overTime)
     }
 
     onChangeSearchTerm = (e) => {

@@ -16,10 +16,10 @@ class DepartmentsStaffDetail extends Component {
                     <div className="row">
                         <Breadcrumb>
                             <BreadcrumbItem><Link to="/phongban">Phòng ban</Link></BreadcrumbItem>
-                            <BreadcrumbItem active>{this.props.departments.name}</BreadcrumbItem>
+                            {/* <BreadcrumbItem active>{this.props.department.name}</BreadcrumbItem> */}
                         </Breadcrumb>
                         <div className="col-12">
-                            <h3><i class="fa fa-street-view" aria-hidden="true"></i> {this.props.departments.name}</h3>
+                            {/* <h3><i class="fa fa-street-view" aria-hidden="true"></i> {this.props.department.name}</h3> */}
                             <hr />
                         </div>
                     </div>
