@@ -49,8 +49,9 @@ class MainStaff extends Component {
         };  
 
         const DepartmentStaffWidthId = ({ match }) => {
+            console.log(this.props.staffs.staffs)
             return (
-                <DepartmentsStaffDetail />
+                <DepartmentsStaffDetail staffDeparments = {this.props.staffs.staffs.filter((staff) => staff.departmentId === String(match.params.departmentId))} />
             )
         };
         
