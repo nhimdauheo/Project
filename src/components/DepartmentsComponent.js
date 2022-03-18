@@ -8,11 +8,13 @@ class Deapartments extends Component {
         super(props)
     }
     render() {
-        const department = this.props.departments.map((department) => {
+        const department = this.props.departments.departments.map((department) => {
             return (
                 <div key={department.id} className="col-12 col-md-6 col-lg-4 p-2">
                     <Card body style={{ padding: 5, borderRadius: 10 }}>
-                        <CardText style={{ fontSize: "25px", fontWeight: "bold" }}>{department.name}</CardText>
+                        <Link to={`/phongban/${department.id}`}>
+                            <CardText style={{ fontSize: "25px", fontWeight: "bold" }}>{department.name}</CardText>
+                        </Link> 
                         <CardTitle>Số lượng nhân viên: {department.numberOfStaff}</CardTitle>
                     </Card>
                 </div>
@@ -41,7 +43,7 @@ class Deapartments extends Component {
                 <div className="container">
                     <div className="row">
                         <Breadcrumb>
-                            <BreadcrumbItem><Link to="/nhamvien">Nhân viên</Link></BreadcrumbItem>
+                            <BreadcrumbItem><Link to="/nhanvien">Nhân viên</Link></BreadcrumbItem>
                             <BreadcrumbItem active>Phòng ban</BreadcrumbItem>
                         </Breadcrumb>
                         <div className="col-12">

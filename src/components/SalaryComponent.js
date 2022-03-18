@@ -21,7 +21,7 @@ class SalaryStaff extends Component {
                 </div>
             )
         })
-        if (this.props.isLoading) {
+        if (this.props.salarys.isLoading) {
             return (
                 <div className="container">
                     <div className="row">
@@ -30,11 +30,11 @@ class SalaryStaff extends Component {
                 </div>
             );
         }
-        else if (this.props.errMess) {
+        else if (this.props.salarys.errMess) {
             return (
                 <div className="container">
                     <div className="row">
-                        <h4>{this.props.errMess}</h4>
+                        <h4>{this.props.salarys.errMess}</h4>
                     </div>
                 </div>
             );

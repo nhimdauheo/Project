@@ -6,6 +6,7 @@ import StaffMenu from "./StaffComponents";
 import StaffFooter from "./StaffFooterComponent";
 import StaffHeader from "./StaffHeaderComponent";
 import StaffDetail from "./StaffDetailComponent"
+import DepartmentsStaffDetail from "./DepartmentsDetailComponent";
 import HomeStaff from "./StaffHomeComponent";
 import { connect } from "react-redux";
 import { addStaff, fetchStaffs, fetchDepartments, fetchSalarys } from "../redux/ActionCreators";
@@ -45,9 +46,15 @@ class MainStaff extends Component {
                 <StaffDetail staff={this.props.staffs.staffs.filter((staff) => staff.id === parseInt(match.params.staffId, 10))[0]}
                  />
             )
-        }; 
-        console.log(this.props)
+        };  
 
+        const DepartmentStaffWidthId = ({ match }) => {
+            return (
+                <DepartmentsStaffDetail
+                 />
+            )
+        };
+        
         return (
             <div className="App">
                 <StaffHeader />
@@ -58,13 +65,14 @@ class MainStaff extends Component {
                         isLoading={this.props.staffs.isLoading}
                         errMess={this.props.staffs.errMess} />} />
                     <Route path="/nhanvien/:staffId" component={StaffWidthId} />
-                    <Route exact path="/phongban" component={() => <Deapartments departments={this.props.departments.departments}
+                    <Route path="/phongban/:departmentId" component={DepartmentStaffWidthId} />
+                    <Route exact path="/phongban" component={() => <Deapartments departments={this.props.departments}
                         addDepartments={this.props.addDepartments}
                         isLoading={this.props.departments.isLoading}
                         errMess={this.props.departments.errMess} />} />
                     <Route exact path="/bangluong" component={() => <SalaryStaff salarys={this.props.salarys}
-                        isLoading={this.props.staffs.isLoading}
-                        errMess={this.props.staffs.errMess} />} />
+                        isLoading={this.props.salarys.isLoading}
+                        errMess={this.props.salarys.errMess} />} />
                     <Redirect to="/home" />
                 </Switch>
                 <StaffFooter />
