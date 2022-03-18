@@ -15,22 +15,20 @@ class StaffMenu extends Component {
             searchTerm: '',
             isModelOpen: false,
             staffs: this.props.staffs
-
         }
-
-        this.toggleModel = this.toggleModel.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-
     }
 
-    toggleModel() {
+    toggleModel =()=> {
         this.setState({
             isModelOpen: !this.state.isModelOpen
         })
     }
-    handleSubmit(values) {
+    handleSubmit = (values) => {
         this.toggleModel()
         this.props.postStaff(values.name, values.doB, values.startDate, values.department, values.salaryScale, values.annualLeave, values.overTime)
+    }
+    handleDelete = (id) =>{
+        this.props.deleteStaff(id)
     }
 
     onChangeSearchTerm = (e) => {
@@ -53,6 +51,8 @@ class StaffMenu extends Component {
                             <CardImg width="100%" src={staff.image} alt={staff.name} />
                             <CardTitle style={{ textAlign: "center", color: "white" }}>{staff.name}</CardTitle>
                         </Link>
+                        <Button color="success" className="m-1">Sửa</Button>
+                        <Button onClick={() => this.handleDelete(staff.id)} color="danger" className="m-1" >Xóa</Button>
                     </Card>
                 </div>      
             )

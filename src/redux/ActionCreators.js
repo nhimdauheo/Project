@@ -6,6 +6,35 @@ export const addStaff = (staff) => ({
     payload: staff
 })
 
+export const delStaff = (staffId) => ({
+    type: ActionTypes.DELETE_STAFF,
+    payload: staffId
+})
+
+export const deleteStaff = (id) => dispatch =>{
+    return fetch(baseUrl + `staffs/${id}`,{
+        method: 'DELETE',
+        credentials: 'same-origin'
+    })
+    .then(response => {
+        if (response.ok) {
+            return response
+        }
+        else {
+            var error = new Error('Error ' + response.status + ': ' + response.statusText);
+            error.response = response;
+            throw error
+        }
+    }, error => {
+        var errmess = new Error(error.message)
+        throw errmess
+    })
+    .then(response => response.json())
+    .then(response => dispatch(delStaff(id)))
+    .catch(error => {console.log('Delete Staff', error.message)
+            alert('Your staff could not be delete\nError: ' + error.message) })
+}
+
 export const postStaff =  (name, doB, startDate, department, salaryScale, annualLeave, overTime) => (dispatch) => {
     const newStaff = {
         name: name,
@@ -41,7 +70,7 @@ export const postStaff =  (name, doB, startDate, department, salaryScale, annual
         throw errmess
     })
     .then(response => response.json())
-    .then(response => dispatch(addStaffs(response)))
+    .then(response => dispatch(addStaff(response)))
     .catch(error => {console.log('Post Staff', error.message)
             alert('Your staff could not be posted\nError: ' + error.message) })
 }
@@ -108,3 +137,4 @@ export const addSalarys = (salarys) => ({
     type: ActionTypes.ADD_SALARYS,
     payload: salarys
 })
+

@@ -9,7 +9,7 @@ import StaffDetail from "./StaffDetailComponent"
 import DepartmentsStaffDetail from "./DepartmentsDetailComponent";
 import HomeStaff from "./StaffHomeComponent";
 import { connect } from "react-redux";
-import { postStaff, fetchStaffs, fetchDepartments, fetchSalarys } from "../redux/ActionCreators";
+import { postStaff, fetchStaffs, fetchDepartments, fetchSalarys, deleteStaff } from "../redux/ActionCreators";
 
 
 const mapStateToProps = state => {
@@ -21,9 +21,11 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = (dispatch) => ({
     postStaff: (name, doB, startDate, department, salaryScale, annualLeave, overTime) => dispatch(postStaff(name, doB, startDate, department, salaryScale, annualLeave, overTime)),
-    fetchStaffs: () => { dispatch(fetchStaffs()) },
+    fetchStaffs: () =>{dispatch(fetchStaffs())} ,
     fetchDepartments: () => { dispatch(fetchDepartments()) },
-    fetchSalarys: () => { dispatch(fetchSalarys()) }
+    fetchSalarys: () => { dispatch(fetchSalarys()) },
+    deleteStaff: (id) => {dispatch(deleteStaff(id))}
+    
 })
 class MainStaff extends Component {
     constructor(props) {
@@ -62,7 +64,8 @@ class MainStaff extends Component {
                     <Route exact path="/nhanvien" component={() => <StaffMenu staffs={this.props.staffs}
                         postStaff={this.props.postStaff}
                         isLoading={this.props.staffs.isLoading}
-                        errMess={this.props.staffs.errMess} />} />
+                        errMess = {this.props.staffs.errMess} 
+                        deleteStaff = {this.props.deleteStaff}/>} />
                     <Route path="/nhanvien/:staffId" component={StaffWidthId} />
                     <Route path="/phongban/:departmentId" component={DepartmentStaffWidthId} />
                     <Route exact path="/phongban" component={() => <Deapartments departments={this.props.departments}
