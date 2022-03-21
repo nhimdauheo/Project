@@ -10,6 +10,7 @@ import DepartmentsStaffDetail from "./DepartmentsDetailComponent";
 import HomeStaff from "./StaffHomeComponent";
 import { connect } from "react-redux";
 import { postStaff, fetchStaffs, fetchDepartments, fetchSalarys } from "../redux/ActionCreators";
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 
 const mapStateToProps = state => {
@@ -44,37 +45,42 @@ class MainStaff extends Component {
         const StaffWidthId = ({ match }) => {
             return (
                 <StaffDetail staff={this.props.staffs.staffs.filter((staff) => staff.id === parseInt(match.params.staffId, 10))[0]}
-                 />
+                />
             )
-        };  
+        };
 
         const DepartmentStaffWidthId = ({ match }) => {
             console.log(this.props.staffs.staffs)
             return (
-                <DepartmentsStaffDetail staffDeparments = {this.props.staffs.staffs.filter((staff) => staff.departmentId === String(match.params.departmentId))} />
+                <DepartmentsStaffDetail staffDeparments={this.props.staffs.staffs.filter((staff) => staff.departmentId === String(match.params.departmentId))} />
             )
         };
-        
+
         return (
             <div className="App">
                 <StaffHeader />
-                <Switch>
-                    <Route exact path="/home" component={() => <HomePage />} />
-                    <Route exact path="/nhanvien" component={() => <StaffMenu staffs={this.props.staffs}
-                        postStaff={this.props.postStaff}
-                        isLoading={this.props.staffs.isLoading}
-                        errMess={this.props.staffs.errMess} />} />
-                    <Route path="/nhanvien/:staffId" component={StaffWidthId} />
-                    <Route path="/phongban/:departmentId" component={DepartmentStaffWidthId} />
-                    <Route exact path="/phongban" component={() => <Deapartments departments={this.props.departments}
-                        addDepartments={this.props.addDepartments}
-                        isLoading={this.props.departments.isLoading}
-                        errMess={this.props.departments.errMess} />} />
-                    <Route exact path="/bangluong" component={() => <SalaryStaff salarys={this.props.salarys}
-                        isLoading={this.props.salarys.isLoading}
-                        errMess={this.props.salarys.errMess} />} />
-                    <Redirect to="/home" />
-                </Switch>
+                <TransitionGroup>
+                    <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
+                        <Switch location={this.props.location}>
+                            <Route exact path="/home" component={() => <HomePage />} />
+                            <Route exact path="/nhanvien" component={() => <StaffMenu staffs={this.props.staffs}
+                                postStaff={this.props.postStaff}
+                                isLoading={this.props.staffs.isLoading}
+                                errMess={this.props.staffs.errMess} />} />
+                            <Route path="/nhanvien/:staffId" component={StaffWidthId} />
+                            <Route path="/phongban/:departmentId" component={DepartmentStaffWidthId} />
+                            <Route exact path="/phongban" component={() => <Deapartments departments={this.props.departments}
+                                addDepartments={this.props.addDepartments}
+                                isLoading={this.props.departments.isLoading}
+                                errMess={this.props.departments.errMess} />} />
+                            <Route exact path="/bangluong" component={() => <SalaryStaff salarys={this.props.salarys}
+                                isLoading={this.props.salarys.isLoading}
+                                errMess={this.props.salarys.errMess} />} />
+                            <Redirect to="/home" />
+                        </Switch>
+                    </CSSTransition>
+                </TransitionGroup>
+
                 <StaffFooter />
             </div>
         )
