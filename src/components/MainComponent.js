@@ -60,7 +60,7 @@ class MainStaff extends Component {
             <div className="App">
                 <StaffHeader />
                 <TransitionGroup>
-                    <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
+                    <CSSTransition key={this.props.location.key} classNames="page" timeout={3000}>
                         <Switch location={this.props.location}>
                             <Route exact path="/home" component={() => <HomePage />} />
                             <Route exact path="/nhanvien" component={() => <StaffMenu staffs={this.props.staffs}
