@@ -144,11 +144,11 @@ class StaffMenu extends Component {
                                                     <Col>
                                                         <Control.select model=".department" name="department"
                                                             className="form-control" >
-                                                            <option>Sale</option>
-                                                            <option>HR</option>
-                                                            <option>Marketing</option>
-                                                            <option>IT</option>
-                                                            <option>Finance</option>
+                                                            <option value='Dept01'>Sale</option>
+                                                            <option value='Dept02'>HR</option>
+                                                            <option value='Dept03'>Marketing</option>
+                                                            <option value='Dept04'>IT</option>
+                                                            <option value='Dept05'>Finance</option>
                                                         </Control.select>
                                                     </Col>
                                                 </FormGroup>
